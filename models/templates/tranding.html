@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/rating.css">
+    <title>CinemaOnline</title>
+{% endblock %}
+
+{% block body %}
+    <div class="main">
+        <h1 class="list-header">Tranding Movies</h1>
+        <div class="rating-list">
+            {% for data in items %}
+                <a href="/movie/{{data.get('id')}}" class="rating-item">
+                    <img src='https://image.tmdb.org/t/p/w400{{data.get("poster_path")}}' alt="img" style="border-radius: 10px; width: 200px;">
+                    <div class="rating-text-content">
+                        <p class="rating-item-name">{{data.get("title")}}</p>
+                        <p class="rating-item-info">{{data.get("overview")}}</p>
+                    </div>
+                    <p class="rating-item-rating">{{data.get("vote_average")}}</p>
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

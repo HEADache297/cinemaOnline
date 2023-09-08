@@ -1,0 +1,65 @@
+.rating-list {
+    margin: 10px;
+}
+
+.list-header {
+    margin: 60px;
+    font-size: 80px;
+}
+
+.rating-item {
+    background-color: #272738;
+    height: 300px;
+    border-radius: 10px;
+    list-style-position: inside;
+    margin: 20px;
+    padding: 20px;
+    display: flex;
+    transition: transform 250ms;
+    text-decoration: none;
+    color: #EFEFEF;
+}
+
+.rating-item:hover {
+    transform: translateY(-5px);
+}
+
+.rating-item-name {
+    font-size: 40px;
+    margin: 10px 0px 30px 30px;
+}
+
+.rating-item-info {
+    font-size: 25px;
+    color: #ababab;
+    margin: 30px;
+    width: 800px;
+}
+
+.rating-item-rating {
+    font-size: 20px;
+    margin-left: auto;
+    margin-right: 30px;
+    color: rgb(255, 221, 0);
+    background-color: #151525;
+    border-radius: 20px;
+    height: 40px;
+    display: flex;
+    width: 60px;
+    align-items: center;
+    justify-content: center;
+}
+
+.delete {
+    display: flex;
+}
+
+.delete-button {
+    background-color: #151525;
+    height: 50px;
+    width: 50px;
+    color: #EFEFEF;
+    border: none;
+    border-radius: 20px;
+    text-align: center;
+}

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/e3853545f7.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    {% block head %}
+    
+    {% endblock %}
+    <link rel="stylesheet" href="/static/css/buttons.css">
+    <style>
+        .active {
+            color: #EFEFEF;
+        }   
+    </style>
+</head>
+<body>
+    <div class="menu">
+        <div class="manu-main">
+            <div class="header">
+                <h1 class="header-top">Cinema</h1>
+                <p class="header-bottom">Online</p>
+            </div>
+            <div class="menu-text">
+                MENU
+            </div>
+            <div class="menu-top-buttons">
+                <a href="/home" class="link active">
+                    <i class="fa-solid fa-house"></i>
+                    Home
+                </a>
+                <a href="{{ url_for('rating') }}" class="link button-Discovery">
+                    <i class="fa-solid fa-star"></i>
+                    Recomended
+                </a>
+                <a href="{{ url_for('upcoming') }}" class="link button-Comunity">
+                    <i class="fa-solid fa-clock"></i>
+                    Upcoming
+                </a>
+                <a href="/search" class="button-Search link">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    Search
+                </a>
+            </div>
+            <hr class="menu-hr">
+            <div class="menu-bottom-buttons">
+                <a href="/settings" class="button-Settings link">
+                    <i class="fa-solid fa-gear"></i>
+                    Settings
+                </a>
+                <a href="{{url_for('logout')}}" class="button-Exit link">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    Exit
+                </a>
+            </div>
+        </div>
+        <div class="menu-profile">
+            {% if current_user.is_authenticated %}
+                <i class="fa-solid fa-user"></i>
+                <div class="menu-profile-info">
+                    <a href="/profile" class="menu-profile-name">
+                        {{ current_user.name }}
+                        {{ current_user.surname }}
+                    </a>
+                    <p class="menu-profile-email">
+                        {{ current_user.email }}
+                    </p>
+                </div>
+            {% else %}
+                <a href="{{ url_for('registration') }}" class="registration">Register</a>
+            {% endif %}
+        </div>
+    </div>
+    {% block body %}
+        
+    {% endblock %}
+</body>
+<script src="/static/js/buttons.js"></script>
+</html>

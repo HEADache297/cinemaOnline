@@ -1,0 +1,123 @@
+.main-info {
+    background-color: #272738;
+    margin: 30px;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.main-info-name {
+    font-size: 40px;
+    margin-left: 40px;
+}
+
+.main-info-header {
+    display: flex;
+}
+
+.main-info-vote {
+    margin-right: 20px;
+    color: rgb(255, 221, 0);
+}
+
+.main-info-main {
+    display: flex;
+}
+
+.main-info-overview {
+    width: 500px;
+    margin: 20px;
+    color: #ababab;
+    font-size: 25px;
+}
+
+.main-info-img {
+    width: 600px;
+    height: 400px;
+    margin: 20px;
+}
+
+.main-info-date {
+    margin: 20px;
+}
+
+.like {
+    background-color: #272738;
+    border: none;
+    margin-left: auto;
+    width: 50px;
+    height: 50px;
+}
+
+.unliked {
+    color: deeppink;
+    margin-top: 30px;
+}
+
+.liked {
+    color: deeppink;
+    margin-top: 30px;
+    display: none;
+}
+
+.main-info-video {
+    width: 900px;
+    height: 600px;
+    padding: 20px;
+}
+
+.main-info-video-box {
+    background-color: #151525;
+    width: 940px;
+    height: 640px;
+    border-radius: 20px;
+    transition: transform 250ms;
+    margin-left: 130px;
+}
+
+.main-info-video-box:hover {
+    transform: translateY(-5px);
+}
+
+.recomended {
+    background-color: #272738;
+    margin: 30px;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.recomended-movies {
+    display: flex;
+}
+
+.recomended-movie-box {
+    background-color: #151525;
+    margin: 20px;
+    border-radius: 20px;
+    height: 250px;
+    transition: transform 250ms;
+}
+
+.recomended-movie-box {
+    transform: translateY(-5px);
+}
+
+.recomended-movie-title {
+    margin: 10px;
+    font-size: 20px;
+    height: 30px;
+}
+
+.recomended-movie-poster {
+    background-color: #272738;
+    border-radius: 20px;
+    width: 200px;
+    height: 160px;
+    margin: 20px;
+}
+
+.recomended-movie-img {
+    background-color: #272738;
+    border-radius: 20px;
+    width: 200px;
+    height: 160px;
+}

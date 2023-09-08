@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/reg.css">
+    <title>CinemaOnline</title>
+{% endblock %}
+
+{% block body %}
+    <form class="main-log" action="/login" method="POST">
+        <div class="main-form">
+            <div class="main-header">
+                <p class="main-title">Login</p>
+            </div>
+            <div class="main-input">
+                <input type="email" class="main-inp" placeholder="Email" name="email">
+                <input type="password" class="main-inp" placeholder="Password" name="password">
+            </div>
+            <div class="error">
+                {% if exep.get("error")%}
+                    {{ exep.get("error") }}
+                {% else %}
+                    <p class="error"></p>
+                {% endif %}
+            </div>
+            <div class="main-button">
+                <input type="submit" value="Login" class="main-button-accept">
+                <a href="/registration" class="main-a-login">Register</a>
+            </div>
+        </div>
+    </form>
+{% endblock %}

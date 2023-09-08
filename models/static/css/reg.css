@@ -1,0 +1,110 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #EFEFEF;
+}
+
+.main-reg {
+    background-color: #272738;
+    margin-top: 100px;
+    width: 500px;
+    height: 600px;
+    border-radius: 10px;
+    transition: transform 250ms;
+}
+
+.main-log {
+    background-color: #272738;
+    margin-top: 100px;
+    width: 500px;
+    border-radius: 10px;
+    transition: transform 250ms;
+}
+
+.main-form {
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.main:hover {
+    transform: translateY(-5px);
+}
+
+.main-header {
+    background-color: #151525;
+    border-radius: 10px;
+    margin: 10px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-input {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
+.main-inp {
+    background-color: #151525;
+    margin-top: 20px;
+    border: none;
+    height: 50px;
+    border-radius: 10px;
+    color: #EFEFEF;
+    padding: 5px;
+    font-size: 20px;
+}
+
+.main-accept {
+    display: flex;
+    flex-direction: column;
+    float: left;
+}
+
+.main-check-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-inp-check {
+    margin: 15px;
+}
+
+.main-inp-label {
+    font-size: 15px;
+    color: #ababab;
+}
+
+.main-button-accept {
+    border: none;
+    width: 200px;
+    height: 40px;
+    background-color: #151525;
+    border-radius: 10px;
+    color: #EFEFEF;
+    margin: 10px;
+}
+
+.main-a-login {
+    font-size: 15px;
+    margin-left: auto;
+    color: #4747ce;
+}
+
+.main-button {
+    display: inline;
+}
+
+.main-button-accept:hover {
+    background-color: #090913;
+}
+
+.error {
+    font-size: 20px;
+    color: red;
+    margin-left: 20px;
+}

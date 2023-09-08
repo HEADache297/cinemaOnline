@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/search.css">
+    <link rel="stylesheet" href="/static/css/rating.css">
+    <script src="https://kit.fontawesome.com/e3853545f7.js" crossorigin="anonymous"></script>
+    <title>CinemaOnline</title>
+{% endblock %}
+
+{% block body %}
+    <div class="main">
+        <form class="main-search" action="{{ url_for('search') }}" method="POST">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" class="main-search-input" placeholder="Search" name="search">
+        </form>
+        <div class="rating-list">
+            {% for data in results %}
+                <a href="/movie/{{data.get('id')}}" class="rating-item">
+                    <img src='https://image.tmdb.org/t/p/w400{{data.get("poster_path")}}' alt="img" style="border-radius: 10px; width: 200px;">
+                    <div class="rating-text-content">
+                        <p class="rating-item-name">{{data.get("title")}}</p>
+                        <p class="rating-item-info">{{data.get("overview")}}</p>
+                    </div>
+                    <p class="rating-item-rating">{{data.get("vote_average")}}</p>
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,12 @@
+.link{
+    font-size: 20px;
+    text-decoration: none;
+    color: #ababab;
+    display: flex;
+    padding: 7px 20px;
+}
+
+.active {
+    color: #EFEFEF;
+}
+

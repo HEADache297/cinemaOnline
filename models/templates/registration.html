@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/reg.css">
+    <title>CinemaOnline</title>
+{% endblock %}
+
+{% block body %}
+    <form class="main-reg" action="/registration" method="POST">
+        <div class="main-form">
+            <div class="main-header">
+                <p class="main-title">Registration</p>
+            </div>
+            <div class="main-input">
+                <input type="text" class="main-inp" placeholder="Name" id="name" name="name">
+                <input type="text" class="main-inp" placeholder="Surname" id="surname" name="surname">
+                <input type="email" class="main-inp" placeholder="Email" id="email" name="email">
+                <input type="password" class="main-inp" placeholder="Password" id="password" name="password">
+            </div>
+            <div class="main-accept">
+                <div class="main-check-div">
+                    <input type="checkbox" id="check" class="main-inp-check" name="check1">
+                    <label for="check1" class="main-inp-label">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</label>
+                </div>
+                <div class="main-check-div">
+                    <input type="checkbox" id="check" class="main-inp-check" name="check2">
+                    <label for="check2" class="main-inp-label">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</label>
+                </div>
+            </div>
+            <div class="error">
+                {% if exep.get("error")%}
+                    {{ exep.get("error") }}
+                {% else %}
+                    <p class="error"></p>
+                {% endif %}
+            </div>
+            <div class="main-button">
+                <a href="/login">
+                    <input type="submit" value="Register" class="main-button-accept">
+                </a>
+                <a href="/login" class="main-a-login">Login</a>
+            </div>
+        </div>
+    </form>
+{% endblock %}

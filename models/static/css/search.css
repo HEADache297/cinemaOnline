@@ -1,0 +1,25 @@
+.main-search {
+    background-color: #272738;
+    border-radius: 10px;
+    width: 60%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    margin: 20px;
+}
+
+.main-search i {
+    margin: 5px;
+}
+
+.main-search-input {
+    border: none;
+    background-color: #272738;
+    font-size: 20px;
+    caret-color: #ababab;
+    color: #EFEFEF;
+}
+
+.main-search-input:focus {
+    outline: none !important;
+}
