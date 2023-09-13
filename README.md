@@ -7,12 +7,14 @@
 
 > ## General info
 > #### Website created with Flask, SQLAlchemy, TMDB
+> 
 
 
 > ## Technologies
 > #### Project is created with:
 > * Flask version:
 > * SQLalchemy version:
+>   
 
 
 > ## Setup
@@ -20,3 +22,4 @@
 > * Download the project
 > * Install all required modules
 > * Run the server
+>   
