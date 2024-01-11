@@ -9,10 +9,6 @@
 > #### Website created with Flask, SQLAlchemy, TMDB
 
 
-<<<<<<< HEAD
-=======
-
->>>>>>> refs/remotes/origin/main
 > ## Technologies
 > #### Project is created with:
 > * Python 3.11.0
