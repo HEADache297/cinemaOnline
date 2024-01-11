@@ -8,13 +8,33 @@
 
 {% block body %}
     <div class="main">
-        <h1 class="list-header">History</h1>
-        <div class="rating-list">
-                <div class="rating-item">
-                    <div class="rating-text-content">
-                        <p class="rating-item-name">You haven't watched any movie</p>
-                    </div>
+        <div class="profile-analitycs">
+            <div class="profile-analitycs-activity">
+                <h1 class="profile-analitycs-activity-name">Liked Movies</h1>
+                <div class="rating-list">
+                    {% for data in data_list %}
+                        <div class="delete">
+                            <a href="/movie/{{data.get('id')}}" class="rating-item">
+                                <img src='https://image.tmdb.org/t/p/w400{{data.get("poster_path")}}' alt="img"
+                                    style="border-radius: 10px; width: 200px;">
+                                <div class="rating-text-content">
+                                    <p class="rating-item-name">{{data.get("title")}}</p>
+                                    <p class="rating-item-info">{{data.get("overview")}}</p>
+                                </div>
+                                <p class="rating-item-rating">{{data.get("vote_average")}}</p>
+                            </a>
+                            <button class="delete-button" data-id="{{data.get('id')}}">
+                                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="1em"
+                                    width="1em" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                        d="M2.5 1a1 1 0 00-1 1v1a1 1 0 001 1H3v9a2 2 0 002 2h6a2 2 0 002-2V4h.5a1 1 0 001-1V2a1 1 0 00-1-1H10a1 1 0 00-1-1H7a1 1 0 00-1 1H2.5zm3 4a.5.5 0 01.5.5v7a.5.5 0 01-1 0v-7a.5.5 0 01.5-.5zM8 5a.5.5 0 01.5.5v7a.5.5 0 01-1 0v-7A.5.5 0 018 5zm3 .5a.5.5 0 00-1 0v7a.5.5 0 001 0v-7z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    {% endfor %}
                 </div>
+            </div>
         </div>
     </div>
 {% endblock %}

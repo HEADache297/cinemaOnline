@@ -11,7 +11,8 @@ import requests
 def home():
     headers = {"accept": "application/json",
               "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmNzRjMzE3NWJjMGExNzNiMDkwZjkyZTljMjQ3NzRmNyIsInN1YiI6IjY0NzBlM2NmNzcwNzAwMDBkZjE0MDFjYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Y3zfcONHo2VXJV_CQbXmR56Kw0YqR296Bvqz_HbcbGU"}
-    
+    # if current_user.is_authenticated:
+        
     #POPULAR
     url = "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1"
     response = requests.get(url, headers=headers)
@@ -55,7 +56,19 @@ def liked():
 
 @app.route("/home/history")
 def history():
-    return render_template("history.html")
+    headers = {"accept": "application/json",
+              "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmNzRjMzE3NWJjMGExNzNiMDkwZjkyZTljMjQ3NzRmNyIsInN1YiI6IjY0NzBlM2NmNzcwNzAwMDBkZjE0MDFjYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Y3zfcONHo2VXJV_CQbXmR56Kw0YqR296Bvqz_HbcbGU"}
+    
+    movies = current_user._like
+    print(movies)
+    data_list = []
+    for film in movies:
+        url = f"https://api.themoviedb.org/3/movie/{film.movie_id}?language=en-US"
+        response = requests.get(url, headers=headers)
+        if response.status_code == 200:
+            data_list.append(response.json())
+            
+    return render_template("history.html", data_list=data_list)
 
 @app.route("/home/series")
 def series():
@@ -72,7 +85,7 @@ def profile():
               "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmNzRjMzE3NWJjMGExNzNiMDkwZjkyZTljMjQ3NzRmNyIsInN1YiI6IjY0NzBlM2NmNzcwNzAwMDBkZjE0MDFjYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Y3zfcONHo2VXJV_CQbXmR56Kw0YqR296Bvqz_HbcbGU"}
     
     movies = current_user._like
-    print(movies)
+    # print(movies)
     data_list = []
     for film in movies:
         url = f"https://api.themoviedb.org/3/movie/{film.movie_id}?language=en-US"

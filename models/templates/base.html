@@ -44,17 +44,19 @@
                     Search
                 </a>
             </div>
-            <hr class="menu-hr">
-            <div class="menu-bottom-buttons">
-                <a href="/settings" class="button-Settings link">
-                    <i class="fa-solid fa-gear"></i>
-                    Settings
-                </a>
-                <a href="{{url_for('logout')}}" class="button-Exit link">
-                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                    Exit
-                </a>
-            </div>
+            {% if current_user.is_authenticated %}
+                <hr class="menu-hr">
+                <div class="menu-bottom-buttons">
+                    <a href="/settings" class="button-Settings link">
+                        <i class="fa-solid fa-gear"></i>
+                        Settings
+                    </a>
+                    <a href="{{url_for('logout')}}" class="button-Exit link">
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                        Exit
+                    </a>
+                </div>
+            {% endif %}
         </div>
         <div class="menu-profile">
             {% if current_user.is_authenticated %}
@@ -69,7 +71,7 @@
                     </p>
                 </div>
             {% else %}
-                <a href="{{ url_for('registration') }}" class="registration">Register</a>
+                <a href="{{ url_for('registration') }}" class="registration">Sign Up</a>
             {% endif %}
         </div>
     </div>
