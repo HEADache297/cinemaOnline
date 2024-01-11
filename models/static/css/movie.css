@@ -87,6 +87,8 @@
 
 .recomended-movies {
     display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .recomended-movie-box {
@@ -99,12 +101,13 @@
 
 .recomended-movie-box {
     transform: translateY(-5px);
+    padding: 10px;
+    width: 300px;
 }
 
 .recomended-movie-title {
-    margin: 10px;
-    font-size: 20px;
-    height: 30px;
+    padding: 20px;
+    font-size: 25px;
 }
 
 .recomended-movie-poster {
@@ -112,7 +115,7 @@
     border-radius: 20px;
     width: 200px;
     height: 160px;
-    margin: 20px;
+    margin: 10px;
 }
 
 .recomended-movie-img {

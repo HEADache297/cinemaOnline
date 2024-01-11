@@ -24,13 +24,26 @@ def home():
     #UPCOMING
     urlU = "https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1"
     responseU = requests.get(urlU, headers=headers)
+
+    movies = current_user._like
+    # print(movies)
+    data_list = []
+    for film in movies:
+        if len(data_list) < 4:
+            urlL = f"https://api.themoviedb.org/3/movie/{film.movie_id}?language=en-US"
+            responseL = requests.get(urlL, headers=headers)
+            if responseL.status_code == 200:
+                data_list.append(responseL.json())
+        else:
+            break
   
     if response.status_code == 200:
         data_popular = response.json()["results"]
         data_rated = responseP.json()["results"]
         data_upcoming = responseU.json()["results"]
+        data_liked = data_list
 
-        return render_template("index.html", items_popular=data_popular, items_rated=data_rated, items_upcoming=data_upcoming)
+        return render_template("index.html", items_popular=data_popular, items_rated=data_rated, items_upcoming=data_upcoming, items_liked=data_liked)
 
     return render_template("index.html")     
 
@@ -54,8 +67,8 @@ def liked():
 
     return jsonify({"id": "123"})
 
-@app.route("/home/history")
-def history():
+@app.route("/home/likes")
+def like_page():
     headers = {"accept": "application/json",
               "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmNzRjMzE3NWJjMGExNzNiMDkwZjkyZTljMjQ3NzRmNyIsInN1YiI6IjY0NzBlM2NmNzcwNzAwMDBkZjE0MDFjYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Y3zfcONHo2VXJV_CQbXmR56Kw0YqR296Bvqz_HbcbGU"}
     
@@ -68,7 +81,7 @@ def history():
         if response.status_code == 200:
             data_list.append(response.json())
             
-    return render_template("history.html", data_list=data_list)
+    return render_template("likes.html", data_list=data_list)
 
 @app.route("/home/series")
 def series():
@@ -111,10 +124,6 @@ def search():
             return render_template("search.html", results = search_data)
         
     return render_template("search.html")
-
-@app.route("/settings")
-def settings():
-    return render_template("settings.html")
 
 @app.route("/home/toprated")
 def rating():

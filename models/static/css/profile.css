@@ -16,6 +16,10 @@ body {
     height: 60px;
     border-radius: 30px;
     color: #ababab;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .profile-back-button:hover {
@@ -48,6 +52,8 @@ body {
 
 .profile-name {
     color: #EFEFEF;
+    margin: 30px;
+    font-size: 40px;
 }
 
 .profile-analitycs {

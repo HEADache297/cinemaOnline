@@ -20,18 +20,13 @@
                     <a href="/home/tranding" class="main-content-section-top-show">Show more</a>
                 </div>
                 <div class="main-content-section-bottom">
-                    {% for i in range(3) %}
+                    {% for i in range(4) %}
                         <a href="/movie/{{items_popular[i].get('id')}}" class="rating-item">
                             <div class="main-content-section-bottom-img">
                                 <img src="https://image.tmdb.org/t/p/w400{{items_popular[i].get('poster_path')}}" alt="img" class="main-content-section-bottpm-img-render">
                             </div>
                         </a>
                     {% endfor %}
-                    <div class="main-content-section-bottom-btn">
-                        <button class="main-content-section-bottom-button">
-                            <i class="fa-solid fa-arrow-right"></i>
-                        </button>
-                    </div>
                 </div>
             </div>
 
@@ -41,41 +36,29 @@
                     <a href="/home/toprated" class="main-content-section-top-show">Show more</a>
                 </div>
                 <div class="main-content-section-bottom">
-                    {% for i in range(3) %}
+                    {% for i in range(4) %}
                         <a href="/movie/{{items_rated[i].get('id')}}" class="rating-item">
                             <div class="main-content-section-bottom-img">
                                 <img src="https://image.tmdb.org/t/p/w400{{items_rated[i].get('poster_path')}}" alt="img" class="main-content-section-bottpm-img-render">
                             </div>
                         </a>
                     {% endfor %}
-                    <div class="main-content-section-bottom-btn">
-                        <button class="main-content-section-bottom-button">
-                            <i class="fa-solid fa-arrow-right"></i>
-                        </button>
-                    </div>
                 </div>
             </div>
 
             <div class="main-content-section">
                 <div class="main-content-section-top">
                     <p class="main-content-section-top-name">Liked Movies</p>
-                    <a href="/home/history" class="main-content-section-top-show">Show more</a>
+                    <a href="/home/likes" class="main-content-section-top-show">Show more</a>
                 </div>
                 <div class="main-content-section-bottom">
-                    <div class="main-content-section-bottom-img">
-                        
-                    </div>
-                    <div class="main-content-section-bottom-img">
-                        
-                    </div>
-                    <div class="main-content-section-bottom-img">
-                        
-                    </div>
-                    <div class="main-content-section-bottom-btn">
-                        <button class="main-content-section-bottom-button">
-                            <i class="fa-solid fa-arrow-right"></i>
-                        </button>
-                    </div>
+                    {% for i in items_liked %}
+                        <a href="/movie/{{i.get('id')}}" class="rating-item">
+                            <div class="main-content-section-bottom-img">
+                                <img src="https://image.tmdb.org/t/p/w400{{i.get('poster_path')}}" alt="img" class="main-content-section-bottpm-img-render">
+                            </div>
+                        </a>
+                    {% endfor %}
                 </div>
             </div>
         </div>

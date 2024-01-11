@@ -14,29 +14,22 @@
 
 <body>
     <div class="profile-header">
-        <button class="profile-back-button">
-            <a class="fa-solid fa-arrow-right fa-rotate-180" href="{{url_for('home')}}" style="position: fixed;"></a>
-        </button>
+        <a class="profile-back-button" href="{{url_for('home')}}" style="text-decoration: none;">
+            <i class="fa-solid fa-arrow-left" ></i>
+        </a>
     </div>
     <div class="profile-main">
         <div class="profile-img">
             img
         </div>
-        <div class="profile-text">
-            <h1 class="profile-name">{{ current_user.name }} {{current_user.surname}}</h1>
-            <p class="profile-info">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. In accusantium explicabo impedit consectetur
-                magnam iusto vero reprehenderit at asperiores natus nesciunt enim voluptatem, quibusdam voluptatum ullam
-                soluta quae. Nihil, neque.
-            </p>
-        </div>
+        <div class="profile-name">{{current_user.name}} {{current_user.surname}}</div>
     </div>
     <div class="profile-analitycs">
         <div class="profile-analitycs-activity">
             <h1 class="profile-analitycs-activity-name">Liked Movies</h1>
             <div class="rating-list">
                 {% for data in data_list %}
-                    <div class="delete">
+                    <div class="delete" style="min-width: 100%;">
                         <a href="/movie/{{data.get('id')}}" class="rating-item">
                             <img src='https://image.tmdb.org/t/p/w400{{data.get("poster_path")}}' alt="img"
                                 style="border-radius: 10px; width: 200px;">
