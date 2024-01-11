@@ -9,7 +9,7 @@
 > #### Website created with Flask, SQLAlchemy, TMDB
 
 
-<<<<<<< HEAD
+< HEAD
 =======
 
 >>>>>>> refs/remotes/origin/main
