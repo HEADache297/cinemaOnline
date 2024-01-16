@@ -7,6 +7,10 @@ import requests
 
 # GET requests
 
+@app.route('/')
+def default():
+    return redirect(url_for('home'))
+
 @app.route("/home")
 def home():
     headers = {"accept": "application/json",
@@ -85,11 +89,79 @@ def like_page():
 
 @app.route("/home/series")
 def series():
-    return render_template("series.html")
+    headers = {"accept": "application/json",
+              "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmNzRjMzE3NWJjMGExNzNiMDkwZjkyZTljMjQ3NzRmNyIsInN1YiI6IjY0NzBlM2NmNzcwNzAwMDBkZjE0MDFjYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Y3zfcONHo2VXJV_CQbXmR56Kw0YqR296Bvqz_HbcbGU"}
+    # if current_user.is_authenticated:
+        
+    #POPULAR
+    url = "https://api.themoviedb.org/3/tv/popular?language=en-US&page=1"
+    response = requests.get(url, headers=headers)
+
+    #TOP_RATED
+    urlP = "https://api.themoviedb.org/3/tv/top_rated?language=en-US&page=1"
+    responseP = requests.get(urlP, headers=headers)
+
+    #UPCOMING
+    urlU = "https://api.themoviedb.org/3/tv/on_the_air?language=en-US&page=1"
+    responseU = requests.get(urlU, headers=headers)
+
+    movies = current_user._like
+    # print(movies)
+    data_list = []
+    for film in movies:
+        if len(data_list) < 4:
+            urlL = f"https://api.themoviedb.org/3/movie/{film.movie_id}?language=en-US"
+            responseL = requests.get(urlL, headers=headers)
+            if responseL.status_code == 200:
+                data_list.append(responseL.json())
+        else:
+            break
+  
+    if response.status_code == 200:
+        data_popular = response.json()["results"]
+        data_rated = responseP.json()["results"]
+        data_upcoming = responseU.json()["results"]
+        data_liked = data_list
+
+        return render_template("series.html", items_popular=data_popular, items_rated=data_rated, items_upcoming=data_upcoming, items_liked=data_liked)
 
 @app.route("/home/tvshow")
 def tv():
-    return render_template("tvshow.html")
+    headers = {"accept": "application/json",
+              "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmNzRjMzE3NWJjMGExNzNiMDkwZjkyZTljMjQ3NzRmNyIsInN1YiI6IjY0NzBlM2NmNzcwNzAwMDBkZjE0MDFjYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Y3zfcONHo2VXJV_CQbXmR56Kw0YqR296Bvqz_HbcbGU"}
+    # if current_user.is_authenticated:
+        
+    #POPULAR
+    url = "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1"
+    response = requests.get(url, headers=headers)
+
+    #TOP_RATED
+    urlP = "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1"
+    responseP = requests.get(urlP, headers=headers)
+
+    #UPCOMING
+    urlU = "https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1"
+    responseU = requests.get(urlU, headers=headers)
+
+    movies = current_user._like
+    # print(movies)
+    data_list = []
+    for film in movies:
+        if len(data_list) < 4:
+            urlL = f"https://api.themoviedb.org/3/movie/{film.movie_id}?language=en-US"
+            responseL = requests.get(urlL, headers=headers)
+            if responseL.status_code == 200:
+                data_list.append(responseL.json())
+        else:
+            break
+  
+    if response.status_code == 200:
+        data_popular = response.json()["results"]
+        data_rated = responseP.json()["results"]
+        data_upcoming = responseU.json()["results"]
+        data_liked = data_list
+
+        return render_template("tvshow.html", items_popular=data_popular, items_rated=data_rated, items_upcoming=data_upcoming, items_liked=data_liked)
 
 @app.route("/profile")
 @login_required
@@ -112,16 +184,21 @@ def profile():
 def search():
     if request.method == "POST":
         data = request.form.get("search")
-        url = f"https://api.themoviedb.org/3/search/movie?query={data}"
-        headers = {"accept": "application/json",
-              "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmNzRjMzE3NWJjMGExNzNiMDkwZjkyZTljMjQ3NzRmNyIsInN1YiI6IjY0NzBlM2NmNzcwNzAwMDBkZjE0MDFjYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Y3zfcONHo2VXJV_CQbXmR56Kw0YqR296Bvqz_HbcbGU"}
         if len(data) == 0:
             return render_template("search.html")
+            
+        print(data)
+        url = f"https://api.themoviedb.org/3/search/multi?query={data}&page=1"
+        headers = {
+            "accept": "application/json",
+            "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmNzRjMzE3NWJjMGExNzNiMDkwZjkyZTljMjQ3NzRmNyIsInN1YiI6IjY0NzBlM2NmNzcwNzAwMDBkZjE0MDFjYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Y3zfcONHo2VXJV_CQbXmR56Kw0YqR296Bvqz_HbcbGU"
+        }
         response = requests.get(url, headers=headers)
+        print(response.text)
 
         if response.status_code == 200:
             search_data = response.json()["results"]
-            return render_template("search.html", results = search_data)
+            return render_template("search.html", results=search_data)
         
     return render_template("search.html")
 
@@ -169,7 +246,7 @@ def tranding():
 
     return render_template("tranding.html")
 
-@app.route("/movie/<int:id>")
+@app.route("/movie/<int:id>", endpoint='movie')
 def movie(id):
     url = f"https://api.themoviedb.org/3/movie/{id}?language=en-US"
     video_url=f"https://api.themoviedb.org/3/movie/{id}/videos?language=en-US"
@@ -182,7 +259,6 @@ def movie(id):
 
     video = requests.get(video_url, headers=headers)
     video_data = video.json().get("results")
-    # print(response.status_code)
     like_status = False
 
     if current_user.is_authenticated:
@@ -198,8 +274,6 @@ def movie(id):
         return render_template("movie.html", item=data, like_status=like_status, video=video_key, recommended = recommended_data)
 
     return render_template("movie.html") 
-
-# POST, GET requests
 
 @app.route("/registration", methods=["GET", "POST"])
 def registration():
@@ -258,8 +332,6 @@ def login():
 def logout():
     logout_user()
     return redirect(url_for("home"))
-
-# POST, GET requests
 
 with app.app_context():
     db.create_all()

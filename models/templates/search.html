@@ -19,7 +19,7 @@
                 <a href="/movie/{{data.get('id')}}" class="rating-item">
                     <img src='https://image.tmdb.org/t/p/w400{{data.get("poster_path")}}' alt="img" style="border-radius: 10px; width: 200px;">
                     <div class="rating-text-content">
-                        <p class="rating-item-name">{{data.get("title")}}</p>
+                        <p class="rating-item-name">{% if data.get("title") %} {{ data.get("title") }} {% else %} {{ data.get("name") }} {% endif %}</p>
                         <p class="rating-item-info">{{data.get("overview")}}</p>
                     </div>
                     <p class="rating-item-rating">{{data.get("vote_average")}}</p>

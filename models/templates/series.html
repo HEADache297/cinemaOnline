@@ -6,11 +6,89 @@
 {% endblock %}
 
 {% block body %}
-    <div class="main">
-        <div class="main-top-menu">
-            <a href="/home" class="button-" style="color: #EFEFEF;">Home</a>
-            <a href="/home/series" class="button-hme">Series</a>
-            <a href="/home/tvshow" class="button-ome">TV show</a>
-        </div>
+<div class="main">
+    <div class="main-top-menu">
+        <a href="/home" class="button-" style="color: #EFEFEF;">Home</a>
+        <a href="/home/series" class="button-hme">Series</a>
+        <a href="/home/tvshow" class="button-ome">TV show</a>
     </div>
+    <div class="main-content">
+        <div class="main-content-left">
+            <div class="main-content-section">
+                <div class="main-content-section-top">
+                    <p class="main-content-section-top-name">Tranding Movies</p>
+                    <a href="/home/tranding" class="main-content-section-top-show">Show more</a>
+                </div>
+                <div class="main-content-section-bottom">
+                    {% for i in range(4) %}
+                        <a href="/series/{{items_popular[i].get('id')}}" class="rating-item">
+                            <div class="main-content-section-bottom-img">
+                                <img src="https://image.tmdb.org/t/p/w400{{items_popular[i].get('poster_path')}}" alt="img" class="main-content-section-bottpm-img-render">
+                            </div>
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="main-content-section">
+                <div class="main-content-section-top">
+                    <p class="main-content-section-top-name">Top Rated</p>
+                    <a href="/home/toprated" class="main-content-section-top-show">Show more</a>
+                </div>
+                <div class="main-content-section-bottom">
+                    {% for i in range(4) %}
+                        <a href="/series/{{items_rated[i].get('id')}}" class="rating-item">
+                            <div class="main-content-section-bottom-img">
+                                <img src="https://image.tmdb.org/t/p/w400{{items_rated[i].get('poster_path')}}" alt="img" class="main-content-section-bottpm-img-render">
+                            </div>
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="main-content-section">
+                <div class="main-content-section-top">
+                    <p class="main-content-section-top-name">Liked Movies</p>
+                    <a href="/home/likes" class="main-content-section-top-show">Show more</a>
+                </div>
+                <div class="main-content-section-bottom">
+                    {% for i in items_liked %}
+                        <a href="/series/{{i.get('id')}}" class="rating-item">
+                            <div class="main-content-section-bottom-img">
+                                <img src="https://image.tmdb.org/t/p/w400{{i.get('poster_path')}}" alt="img" class="main-content-section-bottpm-img-render">
+                            </div>
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <div class="main-content-right">
+            <div class="main-content-right-section">
+                <div class="main-content-right-section-name">
+                    Upcoming Movies
+                </div>
+
+                {% for i in range(4) %}
+                    <a href="/movie/{{items_upcoming[i].get('id')}}" class="rating-item">
+                        <div class="main-content-right-section-movie">
+                            <div class="main-content-right-section-movie-img">
+                                <img src="https://image.tmdb.org/t/p/w500{{items_upcoming[i].get('backdrop_path')}}" alt="img" class="main-content-right-section-movie-render"> 
+                            </div>
+                            <h1 class="main-content-right-section-movie-name">
+                                {{items_upcoming[i].get('title')}}
+                            </h1>
+                            <p class="main-content-right-section-movie-text">
+                                {{items_upcoming[i].get('overview')}}
+                            </p>
+                        </div>
+                    </a>
+                {% endfor %}
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
 {% endblock %}
